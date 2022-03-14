@@ -1,37 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Field from './src/components/Field';
 import params from './src/params';
+import createdMinedBoard from './src/functions';
+import MineField from './src/components/MineField';
+import Field from './src/components/Field';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Iniciando o Campo Minado!</Text>
-      <Text style={styles.instructions}>Tamanho da grade: { params.getRowsAmount() }x{ params.getColumnsAmount() }</Text>
-      <Field />
-      <Field opened />
-      <Field opened nearMines={ 1 } />
-      <Field opened nearMines={ 2 } />
-      <Field opened nearMines={ 3 } />
-      <Field opened nearMines={ 4 } />
-      <Field opened nearMines={ 7 } />
-      <Field opened mined />
-      <Field opened mined exploded />
-      <Field flagged />
-    </View>
-  );
+export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      board: this.createState(),
+    }
+  }
+
+  minesAmount = () => {
+    const rows = params.getRowsAmount();
+    const columns = params.getColumnsAmount();
+
+    return Math.ceil( rows * columns * params.difficultLevel );
+  }
+
+  createState = () => {
+    const rows = params.getRowsAmount();
+    const columns = params.getColumnsAmount();
+
+    return createdMinedBoard(rows, columns, this.minesAmount())
+  }
+
+  render() {
+  
+    const { board } = this.state;
+  
+    return (
+      <View style={ styles.board }>
+        <MineField board={ board } />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center'
+  board: {
+    alignItems: 'center',
+    backgroundColor: '#AAA'
   }
 });
