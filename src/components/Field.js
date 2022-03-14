@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import params from '../params';
+import Mine from './Mine';
 
 class Field extends Component {
   render() {
-    const { mined, opened, nearMines } = this.props;
+    const { mined, opened, nearMines, exploded } = this.props;
     const styleField = [styles.field];
     let color = null;
 
     opened ? styleField.push(styles.opened) : null;
+    
+    exploded ? styleField.push(styles.exploded) : null;
 
     ( styleField.length === 1 ) ? styleField.push(styles.regular) : null;
 
@@ -29,6 +32,7 @@ class Field extends Component {
             )
             : false
         }
+        { (mined && opened) ? <Mine /> : false }
       </View>
     )
   }
@@ -56,6 +60,10 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: '700',
     fontSize: params.fontSize,
+  },
+  exploded: {
+    backgroundColor: 'red',
+    borderColor: 'red',
   }
 });
 
