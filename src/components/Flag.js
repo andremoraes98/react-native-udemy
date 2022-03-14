@@ -3,12 +3,13 @@ import { StyleSheet, View } from 'react-native';
 
 class Flag extends Component {
   render() {
+    const { bigger } = this.props;
     return (
       <View style={ styles.container } >
-        <View style={ styles.flagPole }/>
-        <View style={ styles.flag }/>
-        <View style={ styles.base }/>
-        <View style={ styles.masterBase }/>
+        <View style={ [styles.flagPole, bigger ? styles.flagPoleBigger : null] }/>
+        <View style={ [styles.flag, bigger ? styles.flagBigger : null] }/>
+        <View style={ [styles.base, bigger ? styles.baseBigger : null] }/>
+        <View style={ [styles.masterBase, bigger ? styles.masterBaseBigger : null] }/>
       </View>
     )
   }
@@ -47,6 +48,28 @@ const styles = StyleSheet.create({
     backgroundColor: '#222',
     marginTop: 13,
     marginLeft: 4,
+  },
+  flagPoleBigger: {
+    height: 28,
+    width: 4,
+    marginLeft: 18,
+  },
+  flagBigger: {
+    height: 12,
+    width: 14,
+    marginLeft: 4,
+  },
+  baseBigger: {
+    height: 4,
+    width: 12,
+    marginTop: 22,
+    marginLeft: 14,
+  },
+  masterBaseBigger: {
+    height: 4,
+    width: 24,
+    marginTop: 26,
+    marginLeft: 8,
   }
 })
 
