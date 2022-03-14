@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import params from '../params';
+import Flag from './Flag';
 import Mine from './Mine';
 
 class Field extends Component {
   render() {
-    const { mined, opened, nearMines, exploded } = this.props;
+    const { mined, opened, nearMines, exploded, flagged } = this.props;
     const styleField = [styles.field];
     let color = null;
 
     opened ? styleField.push(styles.opened) : null;
     
     exploded ? styleField.push(styles.exploded) : null;
+
+    flagged ? styleField.push(styles.flagged, styles.regular) : null;
 
     ( styleField.length === 1 ) ? styleField.push(styles.regular) : null;
 
@@ -33,6 +36,7 @@ class Field extends Component {
             : false
         }
         { (mined && opened) ? <Mine /> : false }
+        { (flagged && !opened) ? <Flag /> : false }
       </View>
     )
   }
