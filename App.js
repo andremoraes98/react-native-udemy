@@ -34,6 +34,7 @@ export default class App extends Component {
   
     return (
       <View style={ styles.board }>
+        <Text> {`O campo tem: ${params.getRowsAmount()} x ${params.getColumnsAmount()}`} </Text>
         <MineField board={ board } />
       </View>
     );
