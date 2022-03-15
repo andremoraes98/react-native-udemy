@@ -7,7 +7,7 @@ export default props => {
     const columns = row.map((column, columnIndex) => {
       return <Field { ...column } key={columnIndex} />
     });
-    return <View key={ rowIndex } style={styles.marginLeft}>{columns}</View>
+    return <View key={ rowIndex } style={ { flexDirection: 'row' } }>{columns}</View>
   });
   return <View style={ styles.container }>{rows}</View>
 }
@@ -15,9 +15,5 @@ export default props => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#EEE',
-    marginTop: 60,
-  },
-  marginLeft: {
-    flexDirection: 'row'
   }
 });
