@@ -83,7 +83,7 @@ const openField = (board, row, column) => {
       getNeighbors(board, row, column)
         .forEach((field) => openField(board, field.row, field.column));
     } else {
-      const neighbors = getNeighbors(board, row, field);
+      const neighbors = getNeighbors(board, row, column);
       field.nearMines = neighbors.filter((neighborField) => neighborField.mined).length;
     }
   }

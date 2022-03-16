@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import params from '../params';
 import Flag from './Flag';
 import Mine from './Mine';
 
 class Field extends Component {
   render() {
-    const { mined, opened, nearMines, exploded, flagged } = this.props;
+    const { mined, opened, nearMines, exploded, flagged, onOpen } = this.props;
     const styleField = [styles.field];
     let color = null;
 
@@ -27,18 +27,20 @@ class Field extends Component {
       ) : null;
 
     return (
-      <View style={ styleField }>
-        { ( !mined && opened && nearMines > 0 )
-            ? (
-              <Text style={ [ styles.label, { color: color } ] }>
-                {nearMines}
-              </Text>
-            )
-            : null
-        }
-        { (mined && opened) ? <Mine /> : null }
-        { (flagged && !opened) ? <Flag /> : null }
-      </View>
+      <TouchableWithoutFeedback onPress={ onOpen }>
+        <View style={ styleField }>
+          { ( !mined && opened && nearMines > 0 )
+              ? (
+                <Text style={ [ styles.label, { color: color } ] }>
+                  {nearMines}
+                </Text>
+              )
+              : null
+          }
+          { (mined && opened) ? <Mine /> : null }
+          { (flagged && !opened) ? <Flag /> : null }
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
 }
