@@ -8,19 +8,17 @@ import {
   hadExplosion,
   wonGame,
   showMines,
-  toggleFlag
+  toggleFlag,
+  flagsUsed
 } from './src/functions';
 import MineField from './src/components/MineField';
+import Header from './src/components/Header';
 
 export default class App extends Component {
   constructor() {
     super();
 
-    this.state = {
-      board: this.createState(),
-      won: false,
-      lost: false,
-    }
+    this.state = this.createState()
   }
 
   minesAmount = () => {
@@ -34,7 +32,11 @@ export default class App extends Component {
     const rows = params.getRowsAmount();
     const columns = params.getColumnsAmount();
 
-    return createdBoardMined(rows, columns, this.minesAmount())
+    return {
+      board: createdBoardMined(rows, columns, this.minesAmount()),
+      won: false,
+      lost: false,
+    };
   }
 
   onOpenField = (row, column) => {
@@ -86,7 +88,10 @@ export default class App extends Component {
   
     return (
       <View style={ styles.container }>
-        <Text> {`O campo tem: ${params.getRowsAmount()} x ${params.getColumnsAmount()}`} </Text>
+        <Header
+          flagsLeft={ this.minesAmount() - flagsUsed(board) }
+          onNewGame={ () => this.setState(this.createState()) }
+        />
         <View style={styles.board}>
           <MineField
             board={ board }

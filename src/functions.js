@@ -115,5 +115,6 @@ export {
   hadExplosion,
   wonGame, 
   showMines,
-  toggleFlag
+  toggleFlag,
+  flagsUsed
 }
