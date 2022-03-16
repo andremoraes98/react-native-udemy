@@ -7,7 +7,8 @@ import {
   openField,
   hadExplosion,
   wonGame,
-  showMines
+  showMines,
+  toggleFlag
 } from './src/functions';
 import MineField from './src/components/MineField';
 
@@ -61,6 +62,24 @@ export default class App extends Component {
     });
   }
 
+  onSelectedField = (row, column) => {
+    const { board } = this.state;
+    const clonedBoard = cloneBoard(board);
+
+    toggleFlag(clonedBoard, row, column);
+    
+    const won = wonGame(clonedBoard);
+
+    if (won) {
+      Alert.alert('Ganhou!')
+    }
+
+    this.setState({
+      board: clonedBoard,
+      won,
+    });
+  }
+
   render() {
   
     const { board } = this.state;
@@ -72,6 +91,7 @@ export default class App extends Component {
           <MineField
             board={ board }
             onOpenField={ this.onOpenField }
+            onSelectedField={ this.onSelectedField }
           />
         </View>
       </View>

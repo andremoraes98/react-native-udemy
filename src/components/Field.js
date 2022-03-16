@@ -6,7 +6,7 @@ import Mine from './Mine';
 
 class Field extends Component {
   render() {
-    const { mined, opened, nearMines, exploded, flagged, onOpen } = this.props;
+    const { mined, opened, nearMines, exploded, flagged, onOpen, onSelected } = this.props;
     const styleField = [styles.field];
     let color = null;
 
@@ -27,7 +27,10 @@ class Field extends Component {
       ) : null;
 
     return (
-      <TouchableWithoutFeedback onPress={ onOpen }>
+      <TouchableWithoutFeedback
+        onPress={ onOpen }
+        onLongPress={ onSelected }
+      >
         <View style={ styleField }>
           { ( !mined && opened && nearMines > 0 )
               ? (

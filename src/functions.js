@@ -100,6 +100,14 @@ const wonGame = board => fields(board).filter(pendding).length === 0;
 
 const showMines = board => fields(board).filter(field => field.mined).forEach(field => field.opened = true)
 
+const toggleFlag = (board, row, column) => {
+  const field = board[row][column];
+
+  field.flagged = !field.flagged;
+}
+
+const flagsUsed = (board) => fields(board).filter((field) => field.flagged).length;
+
 export {
   createdBoardMined,
   cloneBoard,
@@ -107,4 +115,5 @@ export {
   hadExplosion,
   wonGame, 
   showMines,
+  toggleFlag
 }

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, SafeAreaView, SafeAreaViewComponent } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Field from './Field';
 
 class MineField extends Component {
   render() {
-    const { board, onOpenField } = this.props;
+    const { board, onOpenField, onSelectedField } = this.props;
     const rows = board.map((row, rowIndex) => {
       const columns = row.map((column, columnIndex) => {
         return (
           <Field
             { ...column }
             key={columnIndex}
-            onOpen={() => onOpenField(rowIndex, columnIndex)}
+            onOpen={ () => onOpenField(rowIndex, columnIndex)}
+            onSelected={ () => onSelectedField(rowIndex, columnIndex) }
           />
         )
       });
