@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import params from './src/params';
-import createdMinedBoard from './src/functions';
+import { createdBoardMined } from './src/functions';
 import MineField from './src/components/MineField';
-import Field from './src/components/Field';
 
 export default class App extends Component {
   constructor() {
@@ -25,7 +24,7 @@ export default class App extends Component {
     const rows = params.getRowsAmount();
     const columns = params.getColumnsAmount();
 
-    return createdMinedBoard(rows, columns, this.minesAmount())
+    return createdBoardMined(rows, columns, this.minesAmount())
   }
 
   render() {
@@ -33,7 +32,7 @@ export default class App extends Component {
     const { board } = this.state;
   
     return (
-      <View style={ styles.board }>
+      <View style={ styles.container }>
         <Text> {`O campo tem: ${params.getRowsAmount()} x ${params.getColumnsAmount()}`} </Text>
         <MineField board={ board } />
       </View>
