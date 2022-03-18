@@ -95,7 +95,6 @@ export default class App extends Component {
     }));
   }
   
-
   render() {
   
     const { board, showLevelSelect } = this.state;
