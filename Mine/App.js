@@ -94,7 +94,7 @@ export default class App extends Component {
       showLevelSelect: !prevState.showLevelSelect,
     }));
   }
-
+  
   render() {
   
     const { board, showLevelSelect } = this.state;
