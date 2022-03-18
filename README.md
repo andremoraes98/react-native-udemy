@@ -10,7 +10,7 @@ Além de todos os fundamentos, criaremos mais quatro projetos, inspirados em apl
 
 ## Projetos
 
-Ao todo, incluindo o bônus, foram 7 requisitos:
+Ao longo do curso, foram desenvolvidos 4 aplicações:
 
 #### 1. Calculadora: Para ver como podemos organizar os elementos através de componentes
 
