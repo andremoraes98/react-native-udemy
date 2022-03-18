@@ -13,6 +13,7 @@ import {
 } from './src/functions';
 import MineField from './src/components/MineField';
 import Header from './src/components/Header';
+import LevelSelection from './src/screens/LevelSelection';
 
 export default class App extends Component {
   constructor() {
@@ -36,6 +37,7 @@ export default class App extends Component {
       board: createdBoardMined(rows, columns, this.minesAmount()),
       won: false,
       lost: false,
+      showLevelSelect: false,
     };
   }
 
@@ -82,15 +84,27 @@ export default class App extends Component {
     });
   }
 
+  levelSelected = (difficult) => {
+    params.difficultLevel = difficult;
+    this.setState(this.createState());
+  }
+
+  toggleDifficultModal = () => {
+    this.setState((prevState) => ({
+      showLevelSelect: !prevState.showLevelSelect,
+    }));
+  }
+
   render() {
   
-    const { board } = this.state;
+    const { board, showLevelSelect } = this.state;
   
     return (
       <View style={ styles.container }>
         <Header
           flagsLeft={ this.minesAmount() - flagsUsed(board) }
           onNewGame={ () => this.setState(this.createState()) }
+          onFlagPress={ this.toggleDifficultModal }
         />
         <View style={styles.board}>
           <MineField
@@ -99,6 +113,11 @@ export default class App extends Component {
             onSelectedField={ this.onSelectedField }
           />
         </View>
+        <LevelSelection
+          isVisible={ showLevelSelect }
+          levelSelected={ this.levelSelected }
+          onCancel={ this.toggleDifficultModal }
+        />
       </View>
     );
   }
