@@ -6,7 +6,11 @@ class CenterText extends Component {
     const { children, bgColor, textColor } = this.props;
     return (
       <View style={ [styles.container, { backgroundColor: bgColor || '#000' }] }>
-        <Text style={ [styles.text, { color: textColor || '#FFF' }] }>{ children }</Text>
+        <Text
+          style={ [styles.text, { color: textColor || '#FFF' }] }
+        >
+          { children }
+        </Text>
       </View>
     )
   }
