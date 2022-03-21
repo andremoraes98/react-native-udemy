@@ -27,7 +27,7 @@ class StackNavigation extends Component {
 
         <Stack.Screen name="TelaB">
           {(props) => (
-              <PassoStack { ...props } advance={'TelaC'}>
+              <PassoStack { ...props } advance={'TelaC'} back>
                 <ScreenB />
               </PassoStack>
             )}
@@ -35,7 +35,7 @@ class StackNavigation extends Component {
         
         <Stack.Screen name="TelaC">
           {(props) => (
-              <PassoStack { ...props } advance={'TelaA'}>
+              <PassoStack { ...props } advance={'TelaA'} back>
                 <ScreenC />
               </PassoStack>
             )}
