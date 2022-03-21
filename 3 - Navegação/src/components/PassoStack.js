@@ -4,7 +4,6 @@ import { Button, StyleSheet, View } from 'react-native';
 class PassoStack extends Component {
   render() {
     const { children, advance } = this.props;
-    console.log(children, advance);
     return (
       <View style={ styles.container }>
         <View>
