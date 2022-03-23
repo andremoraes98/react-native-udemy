@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ScreenA from '../views/ScreenA';
