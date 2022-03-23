@@ -1,14 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import Tab from './Tab';
+import Drawer from './Drawer';
 
 class index extends Component {
   render() {
     return (
       <SafeAreaView style={ styles.container }>
         <NavigationContainer>
-          <Tab />
+          <Drawer />
         </NavigationContainer>
       </SafeAreaView>
     )
