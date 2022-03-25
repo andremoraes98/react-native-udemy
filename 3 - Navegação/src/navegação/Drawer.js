@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import 'react-native-gesture-handler';
 import ScreenA from '../views/ScreenA';
 import ScreenB from '../views/ScreenB';
 import ScreenC from '../views/ScreenC';
