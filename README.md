@@ -1,4 +1,4 @@
-# React Native: Desenvolva APPs Nativas para Android e iOS
+# React Native: Desenvolva APPs Nativos para Android e iOS
 
 Nesse curso, iremos abordar o desenvolvimento de aplicações nativas para dispositivos móveis (Android e iOS), utilizando apenas o JavaScript como linguagem de programação. Isso mesmo, você pode usar o mesmo código para ter aplicações em ambos os ecossistemas.
 
